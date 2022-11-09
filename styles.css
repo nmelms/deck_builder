@@ -1,0 +1,10 @@
+.cardsList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.cardsList img {
+  margin: 1rem 0 0 0;
+  height: auto;
+  width: 80%;
+}
