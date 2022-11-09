@@ -5,6 +5,7 @@
 }
 .cardsList img {
   margin: 1rem 0 0 0;
+  max-width: 300px;
   height: auto;
   width: 80%;
 }
