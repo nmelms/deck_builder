@@ -1,6 +1,17 @@
-.cardsList {
+.search {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./assets/mtgBg.jpg");
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.searchForm {
+  display: flex;
   flex-direction: column;
 }
 .cardsList img {

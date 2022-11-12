@@ -1,21 +1,11 @@
 let cardsList = document.querySelector(".cardsList");
+let switchBtn = document.querySelector(".switchBtn");
+let select = document.querySelector(".select");
 let cards = null;
-
-const fetchCards = (url) => {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      const filtered = data.cards.filter((item) => item.imageUrl !== undefined);
-      console.log(data);
-      console.log(filtered);
-      data.cards;
-      cards = filtered;
-
-      showCards();
-    });
-};
+import { fetchCards } from "/data.js";
 
 const showCards = () => {
+  window.addEventListener("load", () => {});
   for (let i = 0; i < cards.length; i++) {
     let img = document.createElement("img");
     img.src = cards[i].imageUrl;
@@ -23,4 +13,12 @@ const showCards = () => {
   }
 };
 
-fetchCards("https://api.magicthegathering.io/v1/cards?colors=R|W&cmc=5");
+select.addEventListener("change", (e) => {
+  console.log(e.target.value);
+  fetchCards(
+    `https://api.magicthegathering.io/v1/cards?colors=${e.target.value}`
+  );
+  // window.location.replace("cards.html");
+});
+
+// fetchCards("https://api.magicthegathering.io/v1/cards?colors=R|W&cmc=5");
