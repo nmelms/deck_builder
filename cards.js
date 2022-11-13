@@ -1,7 +1,7 @@
 import { fetchCards } from "/data.js";
 
 let cards = JSON.parse(localStorage.getItem("data"));
-let searchColor = localStorage.getItem("searchColor");
+let queryString = localStorage.getItem("queryString");
 let cardsList = document.querySelector(".cardsList");
 let homeBtn = document.querySelector(".homeBtn");
 let nextBtn = document.querySelector(".nextBtn");
@@ -15,32 +15,38 @@ homeBtn.addEventListener("click", () => {
 
 //increment page number
 nextBtn.addEventListener("click", () => {
-  console.log("click");
   let pageString = localStorage.getItem("page");
   let pageNumber = Number(pageString);
   pageNumber++;
   localStorage.setItem("page", pageNumber.toString());
-  console.log(pageNumber);
   fetchCards(
-    `https://api.magicthegathering.io/v1/cards?colors=${searchColor}&page=${pageNumber}&contains=imageUrl&gameFormat=Standard`
+    `https://api.scryfall.com/cards/search?&order=cmc&q=` +
+      queryString +
+      "&page=" +
+      pageNumber
   );
 });
 //decrement page number
 prevBtn.addEventListener("click", () => {
-  console.log("click");
   let pageString = localStorage.getItem("page");
   let pageNumber = Number(pageString);
   pageNumber--;
   localStorage.setItem("page", pageNumber.toString());
   console.log(pageNumber);
   fetchCards(
-    `https://api.magicthegathering.io/v1/cards?colors=${searchColor}&page=${pageNumber}`
+    `https://api.scryfall.com/cards/search?&order=cmc&q=` +
+      queryString +
+      "&page=" +
+      pageNumber
   );
 });
 
 for (let i = 0; i < cards.length; i++) {
   let img = document.createElement("img");
-  img.src = cards[i].imageUrl;
+  if (cards[i].image_uris !== undefined) {
+    img.src = cards[i].image_uris.normal;
+  }
+
   cardsList.appendChild(img);
 }
 

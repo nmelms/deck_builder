@@ -19,10 +19,7 @@ export const fetchCards = (url) => {
     .then((response) => response.json())
     .then((data) => {
       window.location.replace(`cards.html`);
-      console.log(data.cards[1]);
-      const filtered = data.cards.filter((item) => item.imageUrl !== undefined);
-      let cards = filtered;
-
-      localStorage.setItem("data", JSON.stringify(cards));
-    });
+      localStorage.setItem("data", JSON.stringify(data.data));
+    })
+    .catch(console.log((err) => console.log(err)));
 };

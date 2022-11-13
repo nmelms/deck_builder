@@ -15,12 +15,14 @@ const showCards = () => {
 };
 
 select.addEventListener("change", (e) => {
-  localStorage.setItem("searchColor", e.target.value);
+  console.log(e.target.value);
+  localStorage.setItem("queryString", e.target.value);
   localStorage.setItem("page", "1");
   fetchCards(
-    `https://api.magicthegathering.io/v1/cards?colors=${e.target.value}&page=1&contains=imageUrl&gameFormat=Standard`
+    `https://api.scryfall.com/cards/search?&order=cmc&q=` +
+      e.target.value +
+      "&page=1"
   );
-  // window.location.replace("cards.html");
 });
 
 // fetchCards("https://api.magicthegathering.io/v1/cards?colors=R|W&cmc=5");
