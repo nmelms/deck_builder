@@ -18,7 +18,7 @@ select.addEventListener("change", (e) => {
   localStorage.setItem("searchColor", e.target.value);
   localStorage.setItem("page", "1");
   fetchCards(
-    `https://api.magicthegathering.io/v1/cards?colors=${e.target.value}&page=1`
+    `https://api.magicthegathering.io/v1/cards?colors=${e.target.value}&page=1&contains=imageUrl&gameFormat=Standard`
   );
   // window.location.replace("cards.html");
 });

@@ -21,6 +21,7 @@
   flex-wrap: wrap;
 }
 .cardsList img {
+  padding: 0.5rem;
   margin: 1rem 0 0 0;
   max-width: 300px;
   height: auto;
