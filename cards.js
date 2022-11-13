@@ -5,6 +5,7 @@ let searchColor = localStorage.getItem("searchColor");
 let cardsList = document.querySelector(".cardsList");
 let homeBtn = document.querySelector(".homeBtn");
 let nextBtn = document.querySelector(".nextBtn");
+let prevBtn = document.querySelector(".prevBtn");
 
 homeBtn.addEventListener("click", () => {
   window.location.replace(`index.html`);
@@ -15,6 +16,18 @@ nextBtn.addEventListener("click", () => {
   let pageString = localStorage.getItem("page");
   let pageNumber = Number(pageString);
   pageNumber++;
+  localStorage.setItem("page", pageNumber.toString());
+  console.log(pageNumber);
+  fetchCards(
+    `https://api.magicthegathering.io/v1/cards?colors=${searchColor}&page=${pageNumber}`
+  );
+});
+
+prevBtn.addEventListener("click", () => {
+  console.log("click");
+  let pageString = localStorage.getItem("page");
+  let pageNumber = Number(pageString);
+  pageNumber--;
   localStorage.setItem("page", pageNumber.toString());
   console.log(pageNumber);
   fetchCards(

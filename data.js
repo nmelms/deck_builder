@@ -1,4 +1,7 @@
-if (localStorage.getItem("page") === null) {
+if (
+  localStorage.getItem("page") === null ||
+  Number(localStorage.getItem("page")) < 1
+) {
   localStorage.setItem("page", "1");
 }
 
