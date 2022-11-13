@@ -2,6 +2,7 @@ let cardsList = document.querySelector(".cardsList");
 let switchBtn = document.querySelector(".switchBtn");
 let select = document.querySelector(".select");
 let cards = null;
+let pageNumber = localStorage.getItem("page");
 import { fetchCards } from "/data.js";
 
 const showCards = () => {
@@ -14,9 +15,10 @@ const showCards = () => {
 };
 
 select.addEventListener("change", (e) => {
-  console.log(e.target.value);
+  localStorage.setItem("searchColor", e.target.value);
+  localStorage.setItem("page", "1");
   fetchCards(
-    `https://api.magicthegathering.io/v1/cards?colors=${e.target.value}`
+    `https://api.magicthegathering.io/v1/cards?colors=${e.target.value}&page=1`
   );
   // window.location.replace("cards.html");
 });
