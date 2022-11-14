@@ -2,11 +2,14 @@ let cardsList = document.querySelector(".cardsList");
 let switchBtn = document.querySelector(".switchBtn");
 let select = document.querySelector(".select");
 let cardTypeCheckBox = document.querySelector(".cardTypeCheckBox");
+let colorCheckBox = document.querySelector(".colorCheckBox");
 let advancedSearchBtn = document.querySelector(".advancedSearchBtn");
 let cardType = [...document.querySelectorAll(".cardType")];
+let colorType = [...document.querySelectorAll(".colorType")];
+let formatRadio = [...document.querySelectorAll(".formatRadio")];
 let cards = null;
 let pageNumber = localStorage.getItem("page");
-let queryString = "q=c:rgbwu";
+let queryString = "q=";
 import { fetchCards } from "/scripts/data.js";
 console.log(`https://api.scryfall.com/cards/search?${queryString}`);
 const showCards = () => {
@@ -19,8 +22,38 @@ const showCards = () => {
 };
 
 advancedSearchBtn.addEventListener("click", () => {
-  console.log(`https://api.scryfall.com/cards/search?${queryString}&page=1`);
-  fetchCards(`https://api.scryfall.com/cards/search?${queryString}&page=1`);
+  formatRadio.map((item) => {
+    if (item.checked) {
+      queryString += item.value;
+    }
+  });
+
+  let colorString = " c:";
+
+  colorType.map((item) => {
+    if (item.checked) {
+      colorString += item.value;
+    }
+  });
+  queryString += colorString;
+
+  console.log(queryString);
+
+  setTimeout(() => {
+    fetchCards(`https://api.scryfall.com/cards/search?${queryString}&page=1`);
+  }, 2000);
+});
+
+colorCheckBox.addEventListener("change", (e) => {
+  let string = "c:";
+
+  colorType.map((item) => {
+    if (item.checked) {
+      string += item.value;
+    }
+  });
+
+  console.log(queryString);
 });
 
 cardTypeCheckBox.addEventListener("change", (e) => {
