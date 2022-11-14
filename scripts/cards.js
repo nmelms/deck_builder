@@ -1,4 +1,4 @@
-import { fetchCards } from "/data.js";
+import { fetchCards } from "/scripts/data.js";
 
 let cards = JSON.parse(localStorage.getItem("data"));
 let queryString = localStorage.getItem("queryString");
