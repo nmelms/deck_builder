@@ -38,9 +38,9 @@ advancedSearchBtn.addEventListener("click", () => {
 
   console.log(queryString);
 
-  setTimeout(() => {
-    fetchCards(`https://api.scryfall.com/cards/search?${queryString}&page=1`);
-  }, 2000);
+  fetchCards(
+    `https://api.scryfall.com/cards/search?order=color&${queryString}&page=1`
+  );
 });
 
 cardTypeCheckBox.addEventListener("change", (e) => {
@@ -71,5 +71,3 @@ select.addEventListener("change", (e) => {
       "&page=1"
   );
 });
-
-// fetchCards("https://api.magicthegathering.io/v1/cards?colors=R|W&cmc=5");
