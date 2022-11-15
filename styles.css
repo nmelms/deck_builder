@@ -27,3 +27,9 @@
   height: auto;
   width: 80%;
 }
+.cardHover {
+  transition: transform 0.25s ease-in-out;
+}
+.cardHover:hover {
+  transform: scale(1.1);
+}

@@ -41,11 +41,14 @@ prevBtn.addEventListener("click", () => {
   );
 });
 
+// maps over cards images and displays
 for (let i = 0; i < cards.length; i++) {
   let img = document.createElement("img");
   if (cards[i].image_uris !== undefined) {
     img.src = cards[i].image_uris.normal;
   }
+
+  img.classList.add("cardHover");
 
   cardsList.appendChild(img);
 }
