@@ -2,7 +2,6 @@ let cardsList = document.querySelector(".cardsList");
 let switchBtn = document.querySelector(".switchBtn");
 let select = document.querySelector(".select");
 let cardTypeCheckBox = document.querySelector(".cardTypeCheckBox");
-let colorCheckBox = document.querySelector(".colorCheckBox");
 let advancedSearchBtn = document.querySelector(".advancedSearchBtn");
 let cardType = [...document.querySelectorAll(".cardType")];
 let colorType = [...document.querySelectorAll(".colorType")];
@@ -11,7 +10,7 @@ let cards = null;
 let pageNumber = localStorage.getItem("page");
 let queryString = "q=";
 import { fetchCards } from "/scripts/data.js";
-console.log(`https://api.scryfall.com/cards/search?${queryString}`);
+
 const showCards = () => {
   window.addEventListener("load", () => {});
   for (let i = 0; i < cards.length; i++) {
@@ -42,18 +41,6 @@ advancedSearchBtn.addEventListener("click", () => {
   setTimeout(() => {
     fetchCards(`https://api.scryfall.com/cards/search?${queryString}&page=1`);
   }, 2000);
-});
-
-colorCheckBox.addEventListener("change", (e) => {
-  let string = "c:";
-
-  colorType.map((item) => {
-    if (item.checked) {
-      string += item.value;
-    }
-  });
-
-  console.log(queryString);
 });
 
 cardTypeCheckBox.addEventListener("change", (e) => {
