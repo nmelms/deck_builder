@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
 .search {
   height: 100vh;
   width: 100vw;
@@ -27,10 +31,38 @@
   height: auto;
   width: 80%;
 }
+.cardImg {
+  margin: 1rem;
+  max-width: 300px;
+  height: auto;
+}
+.cardImg img {
+  width: 100%;
+  width: 100%;
+}
 .cardHover {
   transition: transform 0.25s ease-in-out;
 }
 .cardHover:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+.deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+.removebtn {
+  opacity: 1 !important;
+  left: 35%;
+  top: 50%;
 }
