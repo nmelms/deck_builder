@@ -42,12 +42,11 @@ prevBtn.addEventListener("click", () => {
   );
 });
 
-const handleClick = (e) => {
-  let idsArr = JSON.parse(localStorage.getItem("ids"));
-  console.log(idsArr);
-  idsArr.push(e.target.id);
-  localStorage.setItem("ids", JSON.stringify(idsArr));
-  console.log(idsArr);
+const handleClick = (card) => {
+  let deckArr = JSON.parse(localStorage.getItem("deckArr"));
+  deckArr.push(card);
+  localStorage.setItem("deckArr", JSON.stringify(deckArr));
+  console.log(deckArr);
 };
 
 // maps over cards images and displays
@@ -58,7 +57,7 @@ for (let i = 0; i < cards.length; i++) {
   }
   img.classList.add("cardHover");
   img.id = cards[i].id;
-  img.addEventListener("click", (e) => handleClick(e));
+  img.addEventListener("click", (e) => handleClick(cards[i]));
   cardsList.appendChild(img);
 }
 

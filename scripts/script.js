@@ -11,6 +11,10 @@ let pageNumber = localStorage.getItem("page");
 let queryString = "q=";
 import { fetchCards } from "/scripts/data.js";
 
+if (localStorage.getItem("deckArr") === null) {
+  localStorage.setItem("deckArr", JSON.stringify([]));
+}
+
 const showCards = () => {
   window.addEventListener("load", () => {});
   for (let i = 0; i < cards.length; i++) {
@@ -36,8 +40,6 @@ advancedSearchBtn.addEventListener("click", () => {
   });
   queryString += colorString;
 
-  console.log(queryString);
-
   fetchCards(
     `https://api.scryfall.com/cards/search?order=color&${queryString}&page=1`
   );
@@ -62,7 +64,6 @@ cardTypeCheckBox.addEventListener("change", (e) => {
 });
 
 select.addEventListener("change", (e) => {
-  console.log(e.target.value);
   localStorage.setItem("queryString", e.target.value);
   localStorage.setItem("page", "1");
   fetchCards(
