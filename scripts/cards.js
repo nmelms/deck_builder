@@ -1,6 +1,7 @@
 import { fetchCards } from "/scripts/data.js";
 
 let cards = JSON.parse(localStorage.getItem("data"));
+let pageNumber = localStorage.getItem("page");
 let queryString = localStorage.getItem("queryString");
 let cardsList = document.querySelector(".cardsList");
 let cardImages = [...document.querySelectorAll("img")];

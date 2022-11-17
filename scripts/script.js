@@ -67,7 +67,7 @@ select.addEventListener("change", (e) => {
   localStorage.setItem("queryString", e.target.value);
   localStorage.setItem("page", "1");
   fetchCards(
-    `https://api.scryfall.com/cards/search?&order=cmc&q=` +
+    `https://api.scryfall.com/cards/search?limit=50&order=cmc&q=` +
       e.target.value +
       "&page=1"
   );
