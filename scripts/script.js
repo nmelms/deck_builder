@@ -1,5 +1,7 @@
 let cardsList = document.querySelector(".cardsList");
 let switchBtn = document.querySelector(".switchBtn");
+let deckLink = document.querySelector(".deckLink");
+let searchLink = document.querySelector(".searchLink");
 let select = document.querySelector(".select");
 let cardTypeCheckBox = document.querySelector(".cardTypeCheckBox");
 let advancedSearchBtn = document.querySelector(".advancedSearchBtn");
@@ -30,9 +32,7 @@ advancedSearchBtn.addEventListener("click", () => {
       queryString += item.value;
     }
   });
-
   let colorString = " c:";
-
   colorType.map((item) => {
     if (item.checked) {
       colorString += item.value;
@@ -72,3 +72,11 @@ select.addEventListener("change", (e) => {
       "&page=1"
   );
 });
+
+// deckLink.addEventListener("click", () => {
+//   window.location.replace("deck.html");
+// });
+// searchLink.addEventListener("click", () => {
+//   console.log("click");
+//   window.location.replace("index.html");
+// });
