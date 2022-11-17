@@ -72,11 +72,3 @@ select.addEventListener("change", (e) => {
       "&page=1"
   );
 });
-
-// deckLink.addEventListener("click", () => {
-//   window.location.replace("deck.html");
-// });
-// searchLink.addEventListener("click", () => {
-//   console.log("click");
-//   window.location.replace("index.html");
-// });
