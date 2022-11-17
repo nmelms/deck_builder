@@ -2,6 +2,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #202124;
+}
 .search {
   height: 100vh;
   width: 100vw;
@@ -19,14 +22,16 @@
   flex-direction: column;
 }
 .cardsList {
+  padding: 2rem;
   display: flex;
   justify-content: center;
   height: fit-content;
   flex-wrap: wrap;
 }
 .cardsList img {
-  padding: 0.5rem;
-  margin: 1rem 0 0 0;
+  border-radius: 25px;
+  /* padding: 0.5rem; */
+  margin: 1rem;
   max-width: 300px;
   height: auto;
   width: 80%;
@@ -68,4 +73,11 @@
   opacity: 1 !important;
   left: 35%;
   top: 50%;
+}
+.searchHeader {
+  position: relative;
+  height: 200px;
+  background-image: url(./assets/header.jpg);
+  background-size: contain;
+  color: white;
 }
