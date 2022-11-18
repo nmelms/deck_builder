@@ -1,8 +1,14 @@
 let deckArr = JSON.parse(localStorage.getItem("deckArr"));
+let allOverlays = [...document.querySelectorAll(".overLay")];
 let deck = document.querySelector(".deck");
 let cards = [];
 
 const cardClick = (e) => {
+  // location.reload();
+  allOverlays.map((item) => {
+    item.style.display = "none";
+  });
+
   let overlay = e.target.parentNode.querySelector(".overlay");
   overlay.style.display === "none"
     ? (overlay.style.display = "flex")

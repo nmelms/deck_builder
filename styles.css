@@ -29,12 +29,9 @@ body {
   flex-wrap: wrap;
 }
 .cardsList img {
-  border-radius: 25px;
-  /* padding: 0.5rem; */
-  margin: 1rem;
-  max-width: 300px;
+  border-radius: 15px;
+  width: 100%;
   height: auto;
-  width: 80%;
 }
 .cardImg {
   margin: 1rem;
@@ -42,7 +39,7 @@ body {
   height: auto;
 }
 .cardImg img {
-  width: 100%;
+  min-width: 100%;
   width: 100%;
 }
 .cardHover {
@@ -80,4 +77,31 @@ body {
   background-image: url(./assets/header.webp);
   background-size: contain;
   color: white;
+}
+.imgDiv {
+  position: relative;
+  width: 80%;
+  max-width: 300px;
+
+  margin: 1rem;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+  50% {
+    opacity: 1;
+    scale: 0.8;
+  }
+  100% {
+    opacity: 0;
+    scale: 0;
+  }
+}
+.checkImg {
+  animation: fadeIn 1s forwards;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
