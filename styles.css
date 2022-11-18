@@ -2,9 +2,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
-  background-color: #202124;
-}
 li {
   list-style: none;
 }
@@ -26,8 +23,17 @@ li {
   display: flex;
   flex-direction: column;
 }
+.cardsPage {
+  margin: 0 auto;
+}
+
 .cardsList {
-  padding: 2rem;
+  /* position: relative;
+  background-image: url(./assets/dragon.webp);
+  background-size: cover;
+  background-position: right;
+  background-attachment: fixed; */
+  padding-top: 70px;
   display: flex;
   justify-content: center;
   height: fit-content;
@@ -40,7 +46,6 @@ li {
 }
 .cardImg {
   margin: 1rem;
-
   max-width: 300px;
   height: auto;
 }
@@ -124,4 +129,9 @@ li {
 .z-index-3 {
   z-index: 3;
   width: 100vw;
+}
+.customSelect {
+  border-radius: 5px;
+  padding: 0.25rem;
+  border: 2px solid white;
 }
