@@ -1,4 +1,5 @@
 let deckArr = JSON.parse(localStorage.getItem("deckArr"));
+let statsCardName = document.querySelector(".statsCardName");
 let allOverlays = [...document.querySelectorAll(".overLay")];
 let deck = document.querySelector(".deck");
 let cards = [];
@@ -26,6 +27,7 @@ const removeClick = (e, index) => {
 for (let i in deckArr) {
   let img = document.createElement("img");
   let div = document.createElement("div");
+  let li = document.createElement("li");
   let btn = document.createElement("button");
   let overlay = document.createElement("div");
   img.src = deckArr[i].image_uris.normal;
@@ -38,10 +40,12 @@ for (let i in deckArr) {
   btn.innerText = "Remove Card";
   overlay.appendChild(btn);
   overlay.style.display = "none";
+  li.innerText = deckArr[i].name;
 
   div.addEventListener("click", (e) => cardClick(e));
   btn.addEventListener("click", (e) => removeClick(e, i));
 
+  statsCardName.appendChild(li);
   div.appendChild(img);
   div.appendChild(overlay);
 

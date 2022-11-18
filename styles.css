@@ -5,19 +5,24 @@
 body {
   background-color: #202124;
 }
+li {
+  list-style: none;
+}
 .search {
+  position: relative;
   height: 100vh;
   width: 100vw;
+  top: 56px;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(./assets/mtgBg.webp);
+  background-image: url(./assets/bg.webp);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 .searchForm {
+  position: absolute;
   display: flex;
   flex-direction: column;
 }
@@ -35,10 +40,12 @@ body {
 }
 .cardImg {
   margin: 1rem;
+
   max-width: 300px;
   height: auto;
 }
 .cardImg img {
+  border-radius: 15px;
   min-width: 100%;
   width: 100%;
 }
@@ -50,9 +57,11 @@ body {
   cursor: pointer;
 }
 .deck {
-  display: flex;
+  width: 100%;
+  padding-top: 70px;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; */
 }
 .overlay {
   position: absolute;
@@ -104,4 +113,15 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+.stats {
+  /* width: 25%;
+  height: 100%;
+  position: fixed; */
+
+  background-color: red;
+}
+.z-index-3 {
+  z-index: 3;
+  width: 100vw;
 }

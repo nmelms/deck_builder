@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <body class="overflow-hidden">
+    <nav
+      class="navbar position-fixed w-100 navbar-expand-md navbar-dark bg-dark"
+    >
       <div class="container-fluid">
         <a class="navbar-brand" href="/">MTG Deck Builder</a>
         <button
@@ -30,20 +32,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div style="margin-left: auto; margin-right: 0" class="navbar-nav">
-            <a class="searchLink nav-link active" aria-current="page" href="/"
-              >Search</a
-            >
             <a class="deckLink nav-link" href="./deck.html">Deck</a>
+            <a
+              class="nav-link"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasLeft"
+              aria-controls="offcanvasLeft"
+            >
+              Avanced Search
+            </a>
           </div>
         </div>
       </div>
     </nav>
 
     <div class="search">
-      <section class="searchForm">
-        <h1>Search</h1>
+      <section class="pl-5 searchForm text-white">
+        <h1>Quick Search</h1>
         <select class="select form-select" aria-label="Default select example">
-          <option selected>Sort by Color</option>
           <option value="c:r">Red</option>
           <option value="c:g">Green</option>
           <option value="c:b">Black</option>
@@ -51,16 +57,6 @@
           <option value="c:u">Blue</option>
         </select>
       </section>
-
-      <button
-        class="btn btn-primary"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasLeft"
-        aria-controls="offcanvasLeft"
-      >
-        Toggle right offcanvas
-      </button>
 
       <div
         class="offcanvas offcanvas-start"
@@ -83,7 +79,7 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body justify-content-between d-flex flex-column">
           <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingThree">
@@ -329,7 +325,9 @@
               </div>
             </div>
           </div>
-          <button class="advancedSearchBtn btn btn-dark">search</button>
+          <button class="advancedSearchBtn w-75 align-self-center btn btn-dark">
+            search
+          </button>
         </div>
       </div>
     </div>
