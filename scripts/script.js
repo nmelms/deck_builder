@@ -27,25 +27,6 @@ const showCards = () => {
 };
 
 advancedSearchBtn.addEventListener("click", () => {
-  formatRadio.map((item) => {
-    if (item.checked) {
-      queryString += item.value;
-    }
-  });
-  let colorString = " c:";
-  colorType.map((item) => {
-    if (item.checked) {
-      colorString += item.value;
-    }
-  });
-  queryString += colorString;
-
-  fetchCards(
-    `https://api.scryfall.com/cards/search?order=color&${queryString}&page=1`
-  );
-});
-
-cardTypeCheckBox.addEventListener("change", (e) => {
   let string = "q=";
   let checkedValues = [];
   cardType.map((item, index) => {
@@ -61,7 +42,30 @@ cardTypeCheckBox.addEventListener("change", (e) => {
     }
     queryString = string;
   });
+
+  formatRadio.map((item) => {
+    if (item.checked) {
+      queryString += item.value;
+    }
+  });
+  let colorString = " c:";
+  colorType.map((item) => {
+    if (item.checked) {
+      colorString += item.value;
+    }
+  });
+  queryString += colorString;
+
+  console.log(string);
+
+  fetchCards(
+    `https://api.scryfall.com/cards/search?order=color&${string}&page=1`
+  );
 });
+
+// cardTypeCheckBox.addEventListener("change", (e) => {
+
+// });
 
 select.addEventListener("change", (e) => {
   localStorage.setItem("queryString", e.target.value);
