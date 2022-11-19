@@ -56,11 +56,11 @@ advancedSearchBtn.addEventListener("click", () => {
   });
   queryString += colorString;
 
-  console.log(string);
-
-  fetchCards(
-    `https://api.scryfall.com/cards/search?order=color&${string}&page=1`
-  );
+  setTimeout(() => {
+    fetchCards(
+      `https://api.scryfall.com/cards/search?order=color&${queryString}&page=1`
+    );
+  }, 2000);
 });
 
 // cardTypeCheckBox.addEventListener("change", (e) => {
