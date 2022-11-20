@@ -124,11 +124,9 @@ advancedSearchBtn.addEventListener("click", () => {
 
   console.log(queryString);
 
-  setTimeout(() => {
-    fetchCards(
-      `https://api.scryfall.com/cards/search?order=color&${queryString}&page=1`
-    );
-  }, 2000);
+  fetchCards(
+    `https://api.scryfall.com/cards/search?order=color&${queryString}&page=1`
+  );
 });
 
 // cardTypeCheckBox.addEventListener("change", (e) => {
