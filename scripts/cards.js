@@ -44,7 +44,6 @@ prevBtn.addEventListener("click", () => {
   let pageNumber = Number(pageString);
   pageNumber--;
   localStorage.setItem("page", pageNumber.toString());
-  console.log(pageNumber);
   fetchCards(
     `https://api.scryfall.com/cards/search?&order=cmc&q=` +
       queryString +
@@ -69,7 +68,8 @@ const handleClick = (e, card) => {
   }, 1000);
 };
 
-const flipClick = (img, card) => {
+const flipClick = (img, card, e) => {
+  e.stopPropagation();
   img.src === card.card_faces[0].image_uris.normal
     ? (img.src = card.card_faces[1].image_uris.normal)
     : (img.src = card.card_faces[0].image_uris.normal);
@@ -80,24 +80,22 @@ for (let i = 0; i < cards.length; i++) {
   let img = document.createElement("img");
   let imgDiv = document.createElement("div");
   let btnDiv = document.createElement("div");
-  let btn = document.createElement("button");
-  btn.classList.add("btn", "btn-dark", "flipBtn");
   imgDiv.classList.add("imgDiv");
 
   if (cards[i].image_uris !== undefined) {
     img.src = cards[i].image_uris.normal;
   } else {
     //cards with two faces get a flip button
-    let img1 = document.createElement("img");
+    let svg = document.createElement("btn");
     img.src = cards[i].card_faces[0].image_uris.normal;
-    img1.src = "../assets/check.svg";
-
-    btn.innerText = "=>";
-    btnDiv.appendChild(img1);
+    svg.innerText = "Flip";
+    svg.classList.add("flipBtn", "btn", "btn-dark");
+    svg.addEventListener("click", (e) => flipClick(img, cards[i], e));
+    btnDiv.addEventListener("click", (e) => handleClick(e, cards[i]));
+    btnDiv.appendChild(svg);
     btnDiv.classList.add("btnDiv");
     imgDiv.appendChild(btnDiv);
     imgDiv.classList.add("cardHover");
-    btn.addEventListener("click", (e) => flipClick(img, cards[i]));
   }
   img.classList.add("cardHover");
   img.id = cards[i].id;
@@ -111,7 +109,6 @@ console.log(cardImages);
 currentPageNumber.innerText = localStorage.getItem("page");
 
 //offcanvas scripts
-
 advancedSearchBtn.addEventListener("click", () => {
   let string = "q=";
   let checkedValues = [];
@@ -148,17 +145,3 @@ advancedSearchBtn.addEventListener("click", () => {
     `https://api.scryfall.com/cards/search?order=color&${queryString}&page=1`
   );
 });
-
-// cardTypeCheckBox.addEventListener("change", (e) => {
-
-// });
-
-// select.addEventListener("change", (e) => {
-//   localStorage.setItem("queryString", e.target.value);
-//   localStorage.setItem("page", "1");
-//   fetchCards(
-//     `https://api.scryfall.com/cards/search?limit=50&order=cmc&q=` +
-//       e.target.value +
-//       "&page=1"
-//   );
-// });

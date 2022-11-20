@@ -139,7 +139,9 @@ li {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 3;
+}
+.flipBtn path {
+  fill: red;
 }
 .btnDiv {
   position: absolute;
