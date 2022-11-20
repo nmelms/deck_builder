@@ -69,15 +69,35 @@ const handleClick = (e, card) => {
   }, 1000);
 };
 
-// maps over cards images and displays
+const flipClick = (img, card) => {
+  img.src === card.card_faces[0].image_uris.normal
+    ? (img.src = card.card_faces[1].image_uris.normal)
+    : (img.src = card.card_faces[0].image_uris.normal);
+};
 
+// maps over cards images and displays
 for (let i = 0; i < cards.length; i++) {
   let img = document.createElement("img");
   let imgDiv = document.createElement("div");
+  let btnDiv = document.createElement("div");
+  let btn = document.createElement("button");
+  btn.classList.add("btn", "btn-dark", "flipBtn");
   imgDiv.classList.add("imgDiv");
 
   if (cards[i].image_uris !== undefined) {
     img.src = cards[i].image_uris.normal;
+  } else {
+    //cards with two faces get a flip button
+    let img1 = document.createElement("img");
+    img.src = cards[i].card_faces[0].image_uris.normal;
+    img1.src = "../assets/check.svg";
+
+    btn.innerText = "=>";
+    btnDiv.appendChild(img1);
+    btnDiv.classList.add("btnDiv");
+    imgDiv.appendChild(btnDiv);
+    imgDiv.classList.add("cardHover");
+    btn.addEventListener("click", (e) => flipClick(img, cards[i]));
   }
   img.classList.add("cardHover");
   img.id = cards[i].id;
