@@ -63,10 +63,6 @@ advancedSearchBtn.addEventListener("click", () => {
   }, 2000);
 });
 
-// cardTypeCheckBox.addEventListener("change", (e) => {
-
-// });
-
 select.addEventListener("change", (e) => {
   localStorage.setItem("queryString", e.target.value);
   localStorage.setItem("page", "1");
