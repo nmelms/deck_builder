@@ -110,6 +110,10 @@ currentPageNumber.innerText = localStorage.getItem("page");
 
 //offcanvas scripts
 advancedSearchBtn.addEventListener("click", () => {
+  advancedSearchBtn.innerHTML = `
+  <div style="height: 1.5rem; width: 1.5rem;" class="spinner-border" role="status">
+    <span class="sr-only"></span>
+  </div>`;
   let string = "q=";
   let checkedValues = [];
   cardType.map((item, index) => {
