@@ -8,7 +8,6 @@ const cardClick = (e) => {
   allOverlays.map((item) => {
     item.style.display = "none";
   });
-
   let overlay = e.target.parentNode.querySelector(".overlay");
   overlay.style.display === "none"
     ? (overlay.style.display = "flex")
@@ -36,9 +35,7 @@ for (let i in deckArr) {
   let li = document.createElement("li");
   let btn = document.createElement("button");
   let overlay = document.createElement("div");
-  let imgDiv = document.createElement("div");
   let btnDiv = document.createElement("div");
-  imgDiv.classList.add("imgDiv");
 
   if (deckArr[i].image_uris !== undefined) {
     img.src = deckArr[i].image_uris.normal;
@@ -56,20 +53,19 @@ for (let i in deckArr) {
   }
   div.classList.add("cardImg", "cardHover");
   div.style.position = "relative";
-
   btn.classList.add("btn", "btn-primary", "removeBtn");
   overlay.classList.add("overlay");
   btn.innerText = "Remove Card";
   overlay.appendChild(btn);
   overlay.style.display = "none";
-  li.innerText = deckArr[i].name;
 
   div.addEventListener("click", (e) => cardClick(e));
   btn.addEventListener("click", (e) => removeClick(e, i));
 
+  li.innerText = deckArr[i].name;
   statsCardName.appendChild(li);
+
   div.appendChild(img);
   div.appendChild(overlay);
-
   deck.appendChild(div);
 }
